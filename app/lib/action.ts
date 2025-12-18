@@ -40,7 +40,8 @@ export async function createInvoice(formData: FormData) {
     VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
   `;
 
-  revalidatePath('/dashboard/invoices');
+  // After creating the invoice, revalidate the invoices page and redirect there
+  revalidatePath('/dashboard/invoices');  // 让缓存失效
   redirect('/dashboard/invoices');
   // console.log(rawFormData)
   // console.log(typeof rawFormData.amount);
